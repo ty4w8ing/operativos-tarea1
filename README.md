@@ -129,3 +129,6 @@ Fecha – Cantidad Horas Invertidas - Tarea - Estudiante
 ## Comentarios finales (estado del programa)
 ## Conclusiones
 ## Bibliografía
+
+- Markdown Cheatsheet. (2016,Febrero 26) Obtenido de https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet .
+
