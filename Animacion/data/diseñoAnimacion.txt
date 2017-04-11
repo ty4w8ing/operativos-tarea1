@@ -1,0 +1,13 @@
+monitor,m1,100,50,1
+monitor,m2,100,70,2
+monitor,m3,100,90,3
+monitor,m4,500,80,4 
+
+//etiqueta monitor -> monitor,nombre,largo,ancho,prioridad
+
+objeto,flecha,rr,0,50,100,50,90 
+
+//etiqueta objeto -> objeto,tipoObjeto, tipoScheduler,posXIni,posYIni,posXFin,posYFin,angulo
+//angulo puede ser 0,90,180,270 y 117(angulo aleatorio)
+
+ 

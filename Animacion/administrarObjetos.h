@@ -6,10 +6,14 @@ typedef struct Objeto{
     char* figura;
 } Figura;
 
-char* splitCadena(char cadena[], char separador[], int posicion);
+char* girar90G(char* figura);
+void movimiento0G(char* nombreObj);
+void movimiento90G(char* nombreObj);
+void movimiento180G(char* nombreObj);
+void movimiento270G(char* nombreObj);
 void agregarObjeto(char* nombre, char* figura);
 void eliminarObjeto(char* nombre);
-void mostrarObjeto(char* nombre);
+void mostrarObjeto(char* figura);
 Figura extraerObjeto(char* nombre);
 void imprimirListaObjetosAlmacenados();
 

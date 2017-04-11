@@ -35,9 +35,10 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 
 # Object Files
 OBJECTFILES= \
+	${OBJECTDIR}/administrarObjetos.o \
 	${OBJECTDIR}/funcionesExtra.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/objeto.o
+	${OBJECTDIR}/monitor.o
 
 
 # C Compiler Flags
@@ -64,6 +65,11 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/animacion: ${OBJECTFILES}
 	${MKDIR} -p ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}
 	${LINK.c} -o ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/animacion ${OBJECTFILES} ${LDLIBSOPTIONS}
 
+${OBJECTDIR}/administrarObjetos.o: administrarObjetos.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/administrarObjetos.o administrarObjetos.c
+
 ${OBJECTDIR}/funcionesExtra.o: funcionesExtra.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
@@ -74,10 +80,10 @@ ${OBJECTDIR}/main.o: main.c
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
 
-${OBJECTDIR}/objeto.o: objeto.c
+${OBJECTDIR}/monitor.o: monitor.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/objeto.o objeto.c
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/monitor.o monitor.c
 
 # Subprojects
 .build-subprojects:

@@ -1,3 +1,3 @@
-build/Debug/GNU-Linux/main.o: main.c objeto.h
+build/Debug/GNU-Linux/main.o: main.c administrarObjetos.h
 
-objeto.h:
+administrarObjetos.h:

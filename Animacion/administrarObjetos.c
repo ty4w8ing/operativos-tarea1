@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "objeto.h"
+#include "administrarObjetos.h"
 #include "funcionesExtra.h"
 
 //Ingresar un objeto al archivo
@@ -100,13 +100,11 @@ Figura extraerObjeto(char* nombreObjeto){
 }
 
 //Busca un objeto en el archivo y muestra la figura
-void mostrarObjeto(char* nombre){
-    Figura objeto = extraerObjeto(nombre);
-    char* figura = objeto.figura;
+void mostrarObjeto(char* figura){    
     int i;
-    
+        
     for(i = 0; i < strlen(figura); i++){        
-        char caracterAct = figura[i];
+        char caracterAct = *(figura+i);
                 
         /*if(caracterAct == '-'){
             printf("|   "); 
@@ -145,4 +143,82 @@ void imprimirListaObjetosAlmacenados(){
     }
     
     fclose(archivo);      
+}
+
+char* girar90G(char* figura){
+    static char figuraAct[31];
+    static char figuraResultante[31];
+    
+    sprintf(figuraResultante,"%s",figura);
+    sprintf(figuraAct,"%s",figura);
+    
+    int fila = 0;
+    
+    while(fila < 5){
+        int j = 0;
+        int topJ = 4;
+        
+        while(j < 5){
+            int idAct = fila*6+j;
+            int idNuevo = fila + topJ*6;
+             
+            figuraResultante[idNuevo] = figuraAct[idAct]; 
+                      
+            j +=1;
+            topJ -= 1;
+        }
+        
+        fila += 1;
+    }
+         
+    return figuraResultante;
+}
+
+void movimiento0G(char* nombreObj){
+    Figura obj = extraerObjeto(nombreObj); 
+    
+    mostrarObjeto(obj.figura);
+    
+    printf("\nMovimiento 0 grados\n\n");
+    
+    mostrarObjeto(obj.figura);
+}
+
+void movimiento90G(char* nombreObj){
+    Figura obj = extraerObjeto(nombreObj); 
+    
+    mostrarObjeto(obj.figura);
+    
+    printf("\nMovimiento 90 grados\n\n");
+    
+    char* fig90 = girar90G(obj.figura);   
+    
+    mostrarObjeto(fig90);
+}
+
+void movimiento180G(char* nombreObj){
+    Figura obj = extraerObjeto(nombreObj); 
+    
+    mostrarObjeto(obj.figura);
+    
+    printf("\nMovimiento 180 grados\n\n");
+    
+    char* fig90 = girar90G(obj.figura);
+    char* fig180 = girar90G(fig90);
+    
+    mostrarObjeto(fig180);
+}
+
+void movimiento270G(char* nombreObj){
+    Figura obj = extraerObjeto(nombreObj); 
+    
+    mostrarObjeto(obj.figura);
+    
+    printf("\nMovimiento 270 grados\n\n");
+    
+    char* fig90 = girar90G(obj.figura);
+    char* fig180 = girar90G(fig90);
+    char* fig270 = girar90G(fig180);
+    
+    mostrarObjeto(fig270);
 }

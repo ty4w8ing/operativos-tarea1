@@ -4,8 +4,9 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>administrarObjetos.h</itemPath>
       <itemPath>funcionesExtra.h</itemPath>
-      <itemPath>objeto.h</itemPath>
+      <itemPath>monitor.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -14,9 +15,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>administrarObjetos.c</itemPath>
       <itemPath>funcionesExtra.c</itemPath>
       <itemPath>main.c</itemPath>
-      <itemPath>objeto.c</itemPath>
+      <itemPath>monitor.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -43,15 +45,19 @@
           <standard>10</standard>
         </cTool>
       </compileType>
+      <item path="administrarObjetos.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="administrarObjetos.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="funcionesExtra.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="funcionesExtra.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="objeto.c" ex="false" tool="0" flavor2="0">
+      <item path="monitor.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="objeto.h" ex="false" tool="3" flavor2="0">
+      <item path="monitor.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="1">
@@ -75,15 +81,19 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="administrarObjetos.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="administrarObjetos.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="funcionesExtra.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="funcionesExtra.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="objeto.c" ex="false" tool="0" flavor2="0">
+      <item path="monitor.c" ex="false" tool="0" flavor2="0">
       </item>
-      <item path="objeto.h" ex="false" tool="3" flavor2="0">
+      <item path="monitor.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>
