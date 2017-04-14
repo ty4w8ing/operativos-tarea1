@@ -106,15 +106,6 @@ void mostrarObjeto(char* figura){
     for(i = 0; i < strlen(figura); i++){        
         char caracterAct = *(figura+i);
                 
-        /*if(caracterAct == '-'){
-            printf("|   "); 
-        }
-        else if(caracterAct == '|'){
-            printf("%c\n",caracterAct); //Mejor impresion del objeto 
-        }       
-        else if(caracterAct != '\n' ){
-            printf("| %c ",caracterAct);
-        }*/
         if(caracterAct == '-'){
             printf(" "); 
         }

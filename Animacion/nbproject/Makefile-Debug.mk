@@ -36,6 +36,7 @@ OBJECTDIR=${CND_BUILDDIR}/${CND_CONF}/${CND_PLATFORM}
 # Object Files
 OBJECTFILES= \
 	${OBJECTDIR}/administrarObjetos.o \
+	${OBJECTDIR}/conexionesPC.o \
 	${OBJECTDIR}/funcionesExtra.o \
 	${OBJECTDIR}/main.o \
 	${OBJECTDIR}/monitor.o
@@ -69,6 +70,11 @@ ${OBJECTDIR}/administrarObjetos.o: administrarObjetos.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/administrarObjetos.o administrarObjetos.c
+
+${OBJECTDIR}/conexionesPC.o: conexionesPC.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conexionesPC.o conexionesPC.c
 
 ${OBJECTDIR}/funcionesExtra.o: funcionesExtra.c
 	${MKDIR} -p ${OBJECTDIR}
