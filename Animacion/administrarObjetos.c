@@ -136,35 +136,6 @@ void imprimirListaObjetosAlmacenados(){
     fclose(archivo);      
 }
 
-char* girar90G(char* figura){
-    static char figuraAct[31];
-    static char figuraResultante[31];
-    
-    sprintf(figuraResultante,"%s",figura);
-    sprintf(figuraAct,"%s",figura);
-    
-    int fila = 0;
-    
-    while(fila < 5){
-        int j = 0;
-        int topJ = 4;
-        
-        while(j < 5){
-            int idAct = fila*6+j;
-            int idNuevo = fila + topJ*6;
-             
-            figuraResultante[idNuevo] = figuraAct[idAct]; 
-                      
-            j +=1;
-            topJ -= 1;
-        }
-        
-        fila += 1;
-    }
-         
-    return figuraResultante;
-}
-
 void movimiento0G(char* nombreObj){
     Figura obj = extraerObjeto(nombreObj); 
     

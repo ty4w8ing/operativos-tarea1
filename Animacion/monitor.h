@@ -10,11 +10,10 @@ struct Monitor{
     struct  Monitor* siguienteMonitor;
 };
 
+void posicionarCursor(struct Monitor* monitores);
 struct Monitor* extraerMonitoresArchivo(char* archivo, int cantidadMonitores);
-struct Monitor* ordenarMonitores(struct Monitor* monitores, int cantidadMonitores);
 void inicializarMonitor(struct Monitor** monitores, char* descripcionMonitor);
-int cantidadMonitores(char* archivo);
-void insertarConexiones(struct Monitor** monitores, int idConexiones[], int numeroConexiones);
+void insertarConexiones(struct Monitor** monitores, int idConexiones[]);
 void imprimirMonitores(struct Monitor* monitores);
 
 #endif /* MONITOR_H */

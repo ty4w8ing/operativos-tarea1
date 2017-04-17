@@ -12,21 +12,13 @@
 #include <err.h>
 
 #include "monitor.h"
+#include "funcionesExtra.h"
+#include "objeto.h"
 
 int puerto = 8080;
 int numeroMonitores = 0;
 int conexionesMaxima = 200;
-
-void imprimirEjemplos(struct Monitor* monitores){
-    while(monitores != NULL){
-        int conexion = monitores->idConexion;
-        char* msn = "\033[8;5HHola Mundo\n";
-        
-        write(conexion, msn, strlen(msn));
-        
-        monitores = monitores->siguienteMonitor;
-    }
-}
+int numeroObjetos = 0;
 
 void terminarConexiones(int* idConexiones){
     int i;
@@ -53,12 +45,18 @@ void iniciarSocket(char* archivo){
         printf("Servidor de la Animación Iniciado!!\n");
     }
     
-    numeroMonitores = cantidadMonitores(archivo);
+    numeroMonitores = cantidadElementos(archivo, "monitor");
+    numeroObjetos = cantidadElementos(archivo, "objeto");
     
     struct Monitor* monitores = extraerMonitoresArchivo(archivo, numeroMonitores);
-        
-    printf("Se han detectado %d monitores!!\n",numeroMonitores);
+    struct Objeto* objetos = extraerObjetosArchivo(archivo, numeroObjetos);
     
+    printf("Se han detectado %d monitores!!\n",numeroMonitores);
+    printf("Se han detectado %d objetos!!\n",numeroObjetos);
+    
+    printf("Detalles Objetos\n\n");
+    imprimirObjetos(objetos);
+    printf("\n");
     
     setsockopt(sock, SOL_SOCKET, SO_REUSEADDR,&one, sizeof(int));
 
@@ -89,15 +87,27 @@ void iniciarSocket(char* archivo){
         else if(pos == numeroMonitores-1){
            printf("Monitor detectado\n\nDetalles de los Monitores\n");
            idMonitores[pos] = cliente;
-           // terminarConexiones(idMonitores);
-           // animacionRealizada = 1;
-           
-           insertarConexiones(&monitores, idMonitores, numeroMonitores);
+                       
+           insertarConexiones(&monitores, idMonitores);
            
            imprimirMonitores(monitores);
            printf("\n");
-           printf("Iniciando Animación!!\n");  
-           imprimirEjemplos(monitores);
+           printf("Iniciando Animación!!\n"); 
+           
+           limpiarMonitores(monitores);
+           iniciarAnimacion(objetos, monitores);
+           sleep(1);
+           limpiarMonitores(monitores);
+           int finalizar = ejecutarAnimacion(objetos, monitores);
+           
+           while(finalizar == 0){
+               sleep(1);
+               limpiarMonitores(monitores);
+               finalizar = ejecutarAnimacion(objetos, monitores);
+           }
+           
+           terminarConexiones(idMonitores);
+           animacionRealizada = 1;
         }
         else if(pos < numeroMonitores){
             printf("Monitor detectado\n");

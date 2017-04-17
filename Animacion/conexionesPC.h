@@ -1,9 +1,9 @@
 #ifndef CONEXIONESPC_H
 #define CONEXIONESPC_H
 
+#include "objeto.h"
 #include "monitor.h"
 
-void imprimirEjemplos(struct Monitor* monitores);
 void terminarConexiones(int idConexiones[]);
 void iniciarSocket(char* archivo);
 

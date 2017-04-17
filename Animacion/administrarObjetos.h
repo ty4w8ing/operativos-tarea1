@@ -1,12 +1,11 @@
 #ifndef OBJETO_H
 #define OBJETO_H
 
-typedef struct Objeto{
+typedef struct ObjetoAlmacenado{
     char* nombre;
     char* figura;
 } Figura;
 
-char* girar90G(char* figura);
 void movimiento0G(char* nombreObj);
 void movimiento90G(char* nombreObj);
 void movimiento180G(char* nombreObj);

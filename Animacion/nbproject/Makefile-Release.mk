@@ -39,7 +39,8 @@ OBJECTFILES= \
 	${OBJECTDIR}/conexionesPC.o \
 	${OBJECTDIR}/funcionesExtra.o \
 	${OBJECTDIR}/main.o \
-	${OBJECTDIR}/monitor.o
+	${OBJECTDIR}/monitor.o \
+	${OBJECTDIR}/objeto.o
 
 
 # C Compiler Flags
@@ -90,6 +91,11 @@ ${OBJECTDIR}/monitor.o: monitor.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/monitor.o monitor.c
+
+${OBJECTDIR}/objeto.o: objeto.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/objeto.o objeto.c
 
 # Subprojects
 .build-subprojects:

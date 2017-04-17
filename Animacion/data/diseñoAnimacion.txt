@@ -1,13 +1,37 @@
-monitor,m1,100,50,1
-monitor,m2,100,70,2
-monitor,m3,100,90,3
-monitor,m4,500,80,4 
+MONITOR
+El id debe iniciar con 1.
+Los monitores deben estar ordenados por su id (menor a mayor).
 
-//etiqueta monitor -> monitor,nombre,largo,ancho,prioridad
+Estructura
+monitor,nombre,largo,ancho,id
 
-objeto,flecha,rr,0,50,100,50,90 
+Ejemplo
+monitor,m1,150,30,1
 
-//etiqueta objeto -> objeto,tipoObjeto, tipoScheduler,posXIni,posYIni,posXFin,posYFin,angulo
-//angulo puede ser 0,90,180,270 y 117(angulo aleatorio)
+OBJETO
+Hay 2 tipos de descripción:
 
- 
+1. Round Robbin
+El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+Para este sckedudeler se manejara una numeración de 0 en su espacio.
+La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+El tiempo de Ejecución y Salida está asociado al scheduler en tiempo real.
+
+Estructura
+objeto,tipoObjeto,scheduler,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucion,tiempoSalida 
+
+Ejemplo
+objeto,flecha,0,130,15,250,15,180,30,50
+
+2. Sorteo
+El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+Para este sckedudeler se manejara una numeración de 1 en su espacio.
+El parámetro cantidadTiquetes se asocia al número inicial de tiquetes que se le otorgará al objeto.
+La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+El tiempo de Ejecución y Salida está asociado al scheduler en tiempo real.
+
+Estructura
+objeto,tipoObjeto,scheduler,cantidadTiquetes,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucion,tiempoSalida 
+
+Ejemplo
+objeto,fle,1,2,250,25,100,25,90,10,30 
