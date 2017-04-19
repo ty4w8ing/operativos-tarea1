@@ -48,8 +48,8 @@ void iniciarSocket(char* archivo){
     numeroMonitores = cantidadElementos(archivo, "monitor");
     numeroObjetos = cantidadElementos(archivo, "objeto");
     
-    struct Monitor* monitores = extraerMonitoresArchivo(archivo, numeroMonitores);
-    struct Objeto* objetos = extraerObjetosArchivo(archivo, numeroObjetos);
+    struct Monitor* monitores = extraerMonitoresArchivo(archivo);
+    struct Objeto* objetos = extraerObjetosArchivo(archivo);
     
     printf("Se han detectado %d monitores!!\n",numeroMonitores);
     printf("Se han detectado %d objetos!!\n",numeroObjetos);

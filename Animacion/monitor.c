@@ -15,7 +15,7 @@ void posicionarCursor(struct Monitor* monitores){
     }
 }
 
-struct Monitor* extraerMonitoresArchivo(char* rutaArchivo, int cantidadMonitores){
+struct Monitor* extraerMonitoresArchivo(char* rutaArchivo){
     FILE* archivo = fopen(rutaArchivo,"r");
     char buffer[255];
     char buffcpy[255];
@@ -57,6 +57,12 @@ void inicializarMonitor(struct Monitor** monitores, char* descripcionMonitor){
             monitor->ancho = atoi(dividirCadena);
         }
         else if(i == 4){
+            monitor->posXIni = atoi(dividirCadena);
+        }
+        else if(i == 5){
+            monitor->posYIni = atoi(dividirCadena);
+        }
+        else if(i == 6){
             monitor->id = atoi(dividirCadena);
         }
         dividirCadena = strtok(NULL, ",");

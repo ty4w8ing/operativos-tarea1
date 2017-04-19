@@ -28,7 +28,7 @@ char* movimiento180Grados(char* figura);
 char* movimiento270Grados(char* figura);
 char* moverFigura(char* figura, int rotacion);
 char* objetoParseado(char* filaObjeto);
-struct Objeto* extraerObjetosArchivo(char* archivo, int cantidadObjetos);
+struct Objeto* extraerObjetosArchivo(char* archivo);
 void inicializarObjeto(struct Objeto** objetos, char* descripcionObjeto);
 void imprimirObjetos(struct Objeto* objetos);
 char* extraerFigura(char* nombreObjeto);

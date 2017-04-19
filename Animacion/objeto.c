@@ -154,20 +154,23 @@ char* objetoParseado(char filaObjeto[]){
 void mostrarFiguraMonitor(struct Monitor* monitores, char filaFigura[], int posY, int posX){
     int i = 0;
     static char cadena[1];
-    struct Monitor* monitorAct = monitores;
+    struct Monitor* monitorAct;
     int y = posY;
     int x = posX;
     
     for(i = 0; i < strlen(filaFigura); i +=1){
         char caracterAct = filaFigura[i];
         
-        while(x > monitorAct->largo){
-            x -= monitorAct->largo;
+        monitorAct = monitores;
+        while(monitorAct != NULL){
+            if(monitorAct->posXIni <= x && (monitorAct->posXIni + monitorAct->largo) >= x 
+                    && monitorAct->posYIni <= y && (monitorAct->posYIni + monitorAct->ancho) >= y){
+                sprintf(cadena,"\033[%d;%dH%c\n",monitorAct->ancho - (y - monitorAct->posYIni),x - monitorAct->posXIni,caracterAct);
+                write(monitorAct->idConexion,cadena,strlen(cadena));
+                break;
+            }
             monitorAct = monitorAct->siguienteMonitor;
         }
-        
-        sprintf(cadena,"\033[%d;%dH%c\n",y,x,caracterAct);
-        write(monitorAct->idConexion,cadena,strlen(cadena));
         x +=1;
     }
     posicionarCursor(monitores);
@@ -223,7 +226,7 @@ char* extraerFigura(char* nombreObjeto){
     return figura;
 }
 
-struct Objeto* extraerObjetosArchivo(char* rutaArchivo, int cantidadMonitores){
+struct Objeto* extraerObjetosArchivo(char* rutaArchivo){
     FILE* archivo = fopen(rutaArchivo,"r");
     char buffer[255];
     char buffcpy[255];
