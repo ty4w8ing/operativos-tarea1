@@ -17,6 +17,8 @@
 typedef unsigned long int thread_id;            /* ID del thread */
 typedef struct attributes thread_attributes;    /* atributos del thread */
 
+enum STATE{ DONE, READY, BLOCKED };
+
 struct attributes {
     thread_id my_thread_id;             /* ID del thread */
     int thread_state;                   /* estado del thread (DONE, READY, BLOCKED) */
@@ -24,6 +26,8 @@ struct attributes {
     void *(*thread_function)(void*);    /* Funcion que recibe el hilo */
     void *arguments;                    /* Argumento de esa funcion */
     jmp_buf environment;                /* para almacenar el contexto del hilo https://es.wikipedia.org/wiki/Setjmp.h */
+    thread_attributes* joined_to;       /* Hilo que esta esperando a que termine*/
+    thread_attributes* joined_thread;   /* El hilo que está esperando a que este termine*/
 };
 
 
