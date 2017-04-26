@@ -11,28 +11,24 @@
 #define NULL ((void*)0)
 
 
-
-void round_robin_end_quatum(int _signal){
-    round_robin_cambio_contexto();
-}
-
-void round_robin_cambio_contexto(){
-    //yolo
+/* Funcion que me inica el fin del quantum */
+void round_robin_end_quantum(int _signal){
+    round_robin_switch_context();
 }
 
 /* Funcion que inicializa la lista de hilos junto a su respectivo quantum*/
-void round_robin_init(int quantum, thread_attributes* elemento){
+void round_robin_initialize(int quantum, thread_attributes* elemento){
     /* LISTA */
     rr_lista_thread = malloc(sizeof(rrlista)); //-------------- asigno la memoria
-    rr_lista_thread->tamano = 0; //---------------------------- seteamos su tama;o por defecto
-    rr_lista_thread->head =  malloc(sizeof(rrelemento)); // --- signamos memoria para el nodo inicial
+    rr_lista_thread->tamano = 1; //---------------------------- seteamos su tama;o por defecto
+    rr_lista_thread->head =  malloc(sizeof(rrelemento)); // --- asignamos memoria para el nodo inicial
     rr_lista_thread->tail = rr_lista_thread->head; //---------- decimos que el el primero es el ultimo
     rr_lista_thread->head->next = rr_lista_thread->tail; // --- decimos que el siguiente elemento es la cola
     rr_lista_thread->head->hilo = NULL; //--------------------- damos el valor NULL al thread asociado al head
-    round_robin_insert(elemento); //--------------------------- se agrega el thread principal    
     /* QUATUM */
     rr_quantum = quantum;
-    set_Timer(rr_quantum, round_robin_end_quatum());
+    round_robin_insert(elemento); //--------------------------- se agrega el thread principal   
+    set_Timer(rr_quantum, round_robin_end_quantum());
 }
 
 
@@ -41,7 +37,7 @@ void round_robin_insert(thread_attributes* hilo){
     if (rr_lista_thread->head->hilo == NULL){
         rr_lista_thread->head->hilo = hilo; //----------------- si la lista esta vacia insertamos el elemento
     } else {
-        rrelemento temporal = malloc(sizeof(rrelemento)); //--- crr_lista_threadreamos un temporal para el elemento a insertar
+        rrelemento* temporal = malloc(sizeof(rrelemento)); //-- crr_lista_threadreamos un temporal para el elemento a insertar
         temporal->hilo = hilo; //------------------------------ asignamos los valores del hilo al temporal
         rr_lista_thread->tail->next =  temporal; //------------ ponemos el elemento nuevo al final de la lista (despues del tail)
         rr_lista_thread->tail = temporal; //------------------- ahora el tail tiene el valor del nuevo elemento
@@ -82,7 +78,7 @@ void round_robin_delete(rrelemento *hilo){
     thread_attributes* muerto = hilo->hilo; //------------------- creo un temporal con los atributos del hilo
     /* A continuacion paso a liberar la memoria y setear en NULL todos los atributos del hilo */
     muerto->joined_to = NULL;
-    if (muerto->joined_thread != NULL){
+    if (muerto != NULL){
         muerto->joined_thread = NULL;
     }
     hilo->next = NULL;
@@ -124,8 +120,8 @@ void round_robin_switch_context(){
     round_robin_next(); //--------------------------------- pasamos al siguiente hilo
     actual = round_robin_get_current();
     if(actual != NULL){ 
-        set_Timer(rr_quantum, round_robin_end_quatum); //-- setiamos su tiempo
-        siglongjmp(actual->hilo->environment, 1); //------- brincamos a la siguiente se;al
+        set_Timer(rr_quantum, round_robin_end_quantum); //-- setiamos su tiempo
+        siglongjmp(actual->hilo->environment, 1); //------- brincamos a la se;al salvada
     }
     exit(-1);
 }

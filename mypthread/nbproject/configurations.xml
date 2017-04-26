@@ -4,10 +4,13 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
+      <itemPath>lotto.h</itemPath>
       <itemPath>myTimer.h</itemPath>
       <itemPath>round_robin.h</itemPath>
       <itemPath>round_robin_list.h</itemPath>
       <itemPath>simpeThread.h</itemPath>
+      <itemPath>sorteo.h</itemPath>
+      <itemPath>sorteo_list.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -16,8 +19,10 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
+      <itemPath>lotto.c</itemPath>
       <itemPath>myTimer.c</itemPath>
       <itemPath>round_robin.c</itemPath>
+      <itemPath>sorteo.c</itemPath>
     </logicalFolder>
     <logicalFolder name="TestFiles"
                    displayName="Test Files"
@@ -41,6 +46,10 @@
       </toolsSet>
       <compileType>
       </compileType>
+      <item path="lotto.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="lotto.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="myTimer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="myTimer.h" ex="false" tool="3" flavor2="0">
@@ -52,6 +61,12 @@
       <item path="round_robin_list.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="simpeThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sorteo.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="sorteo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sorteo_list.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
     <conf name="Release" type="2">
@@ -74,6 +89,10 @@
           <developmentMode>5</developmentMode>
         </asmTool>
       </compileType>
+      <item path="lotto.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="lotto.h" ex="false" tool="3" flavor2="0">
+      </item>
       <item path="myTimer.c" ex="false" tool="0" flavor2="0">
       </item>
       <item path="myTimer.h" ex="false" tool="3" flavor2="0">
@@ -85,6 +104,12 @@
       <item path="round_robin_list.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="simpeThread.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sorteo.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="sorteo.h" ex="false" tool="3" flavor2="0">
+      </item>
+      <item path="sorteo_list.h" ex="false" tool="3" flavor2="0">
       </item>
     </conf>
   </confs>

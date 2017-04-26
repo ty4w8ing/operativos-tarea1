@@ -16,9 +16,8 @@ rrlista* rr_lista_thread;
 /* Quatum del round robin*/
 int rr_quantum;
 
-void round_robin_end_quatum(int _signal);
-void round_robin_cambio_contexto();
-void round_robin_init(int quantum, thread_attributes* elemento);
+void round_robin_end_quantum(int _signal);
+void round_robin_initialize(int quantum, thread_attributes* elemento);
 void round_robin_next();
 void round_robin_delete(rrelemento* hilo);
 void round_robin_insert(thread_attributes* hilo);
