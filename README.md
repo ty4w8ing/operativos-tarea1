@@ -2,7 +2,6 @@
 Estudiantes:
 - Mauricio Arce.
 - Gustavo González.
-- áéíóúñ para copy paste - quitar
 
 ## Introducción
 ### Objetivo
@@ -116,19 +115,67 @@ Además de las definiciones anteriores tome en cuenta:
 Establecer un lenguaje común donde dos proyectos funcionen como si fuera uno. O sea que sea posible la federación de dos proyectos diferentes. 
 
 ## Ambiente de desarrollo
+
+El presente proyecto se realizará sobre GNU/Linux usando el compilador de *GCC* para código en lenguaje *C*.
+
 ## Estructuras de datos usadas y funciones
+
+El proyecto consta de 2 partes claramente definidas, la biblioteca myPthread y el programa de la animación.
+
+### Biblioteca myPthread
+
+Para esta biblioteca se implemtó lo siguiente.
+
+#### timer.h
+
+Esto controla el timer y manda un signal de *Alert*, esto para ser utilizado en los cambios de contexto más adelante.
+
+### simpleThread.h
+
+Es una estructura de datos que contiene los atributos principales de los threads que se van a crear. Estos atributos son:
+
+- thread_id: ID del thread.
+- thread_state: estado del thread (DONE, READY, BLOCKED).
+- stack: tamaño del hilo.
+- thread_function: funcion que recibe el hilo.
+- arguments: argumentos de esa funcion.
+- environment: para almacenar el contexto del hilo.
+ - joined_to: Hilo que esta esperando a que termine.
+ - joined_thread: El hilo que está esperando a que este termine.
+ 
+### lotto.h
+
+En este header se genera un random probabilistico donde se le asigna más probabilidad a un proceso con más tiquetes.
+
+### [scheduling]_list.h
+
+Es la lista que contiene la estructura principal para almacenar el algoritmo de scheduling.
+
+### round_robin.h
+
+Es el algoritmo de scheduling que va de uno en uno asignando procesos de forma circular.
+
+### sorteo.h
+
+Es el algoritmo de scheduling que utiliza *lotto.h* para asignar procesos probabilisticamente.
+
+
 ## Instrucciones para ejecutar el programa
+
+
 ## Actividades realizadas por estudiante
 
 Se desglosan en el formato: 
 
 Fecha – Cantidad Horas Invertidas - Tarea - Estudiante
 
-- `2 Abril - 1 hora - Creación del Git, inicio del README.md - Gustavo`. 
+- `9 Abril - 1 hora - Creación del Git, inicio del README.md - Gustavo`. 
+- `15 al 25 de Abril - 10 horas - Investigación sobre la biblioteca pthread de POSIX - Gustavo`. 
+- `26 al 30 de Abril - 15 horas - Creación de las bases (schedulers) de la biblioteca myPthread exeptuando tiempo real - Gustavo`. 
 
 ## Comentarios finales (estado del programa)
 ## Conclusiones
 ## Bibliografía
 
-- Markdown Cheatsheet. (2016, Febrero 26). Obtenido de https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet .
-
+- Markdown Cheatsheet. (2016, Febrero 26). Obtenido de https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet 
+- SetJump para cambios de contexto. Obtenido de https://es.wikipedia.org/wiki/Setjmp.h 
