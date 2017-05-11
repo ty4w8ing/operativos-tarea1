@@ -1,9 +1,13 @@
 # MultiDisplay Animation
+
 Estudiantes:
+
 - Mauricio Arce.
+
 - José Gustavo González González.
 
 ## Introducción
+
 ### Objetivo
 
 Realizar una re-implementación de algunas de las funciones de la biblioteca de pthreads de C del Sistema Operativo GNU/Linux. 
@@ -12,15 +16,25 @@ Realizar una re-implementación de algunas de las funciones de la biblioteca de 
 #### MyPthreads
 
 Se realizará la re-implementación de la biblioteca de pthreads, llamada **mypthreads**, de las siguientes funciones: 
+
 - `my_thread_create`
+
 - `my_thread_end`
+
 - `my_thread_yield`
+
 - `my_thread_join`
+
 - `my_thread_detach`
+
 - `my_mutex_init`
+
 - `my_mutex_destroy`
+
 - `my_mutex_lock`
+
 - `my_mutex_unlock`
+
 - `my_mutex_trylock`
 
 Además de las funciones por defecto de phtreads es necesario implementar los siguientes métodos:
@@ -56,9 +70,13 @@ El sistema de animación consiste en una especie de Flash para ASCII que permite
 Se deberá de describir un lenguaje común que permita la descripción de cualquier tipo de animación. En este lenguaje se tendrán conceptos como:
 
 - Restricciones de tiempo de inicio y final.
+
 - Establecer el tamaño del canvas.
+
 - Descripción de Objetos.
+
 - Límite de espacio de Objetos.
+
 - Descripción de movimiento de Objetos.
 
 ##### Monitores de despliegue
@@ -107,7 +125,9 @@ Se debe de crear una animación de prueba que permita mostrar el funcionamiento 
 Además de las definiciones anteriores tome en cuenta:
 
 - Todo el sistema de Animación es gobernado por el Scheduler de TiempoReal, que hace que se cumplan los límites de tiempo. Este le da más prioridad a un hilo cambiándolo temporalmente de scheduler a uno más eficiente. Por ejemplo se deberá de elegir el sorteo y darle más tiquetes al hilo.
+
 - Todos los animadores corren en modo listening.
+
 - La arquitectura de la federación de monitores es distribuida formando un grafo. Este grafo puede ser: una lista enlazada, en forma de estrella o cualquier otra forma.
 
 #### Extra
@@ -147,12 +167,19 @@ Funcion que detiene el timer.
 Es una estructura de datos que contiene los atributos principales de los threads que se van a crear. Estos atributos son:
 
 - thread_id: ID del thread.
+
 - thread_state: estado del thread (DONE, READY, BLOCKED).
+
 - stack: tamaño del hilo.
+
 - thread_function: funcion que recibe el hilo.
+
 - arguments: argumentos de esa funcion.
+
 - environment: para almacenar el contexto del hilo.
+
  - joined_to: Hilo que esta esperando a que termine.
+ 
  - joined_thread: El hilo que está esperando a que este termine.
  
 #### lotto.h
@@ -189,7 +216,9 @@ Se desglosan en el formato:
 Fecha – Cantidad Horas Invertidas - Tarea - Estudiante
 
 - `15 al 25 de Abril - 10 horas - Investigación sobre la biblioteca pthread- Gustavo`. 
+
 - `26 al 30 de Abril - 15 horas - Creación de las bases (schedulers) de la biblioteca myPthread exeptuando tiempo real - Gustavo`. 
+
 - `10 Mayo - 2 hora - Documentación - Gustavo y Mauricio`. 
 
 ## Comentarios finales (estado del programa)
@@ -207,5 +236,7 @@ Pese a la no implementación de la biblioteca, se obtuvo un conocimiento bastant
 ## Bibliografía
 
 - Markdown Cheatsheet. (2016, Febrero 26). Obtenido de https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet 
+
 - SetJump para cambios de contexto. Obtenido de https://es.wikipedia.org/wiki/Setjmp.h 
+
 - Margaret Rouse. (2010). Round Robin. Obtenido el 26/Abril/2017, de Techtarget Sitio web: http://whatis.techtarget.com/definition/round-robin
