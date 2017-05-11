@@ -169,11 +169,11 @@ Es la lista que contiene la estructura principal para almacenar el algoritmo de 
 
 #### round_robin.h
 
-Es el algoritmo de scheduling que va de uno en uno asignando procesos de forma circular. 
+Para el *rr* (*round robin*), utilizamos una lista enlazada circular, donde el *head* es el proceso que se encuentra en ejecución. Para ceder el procesador, el siguiente proceso que toma este recurso sería el siguiente de la lista.
 
 #### sorteo.h
 
-Es el algoritmo de scheduling que utiliza *lotto.h* para asignar procesos probabilisticamente.
+Para sorteo, se asignan tiquetes a cada proceso al ingresar en la lista enlazada, y el siguiente proceso sería tomado al azar, usando un random probabilístico. De esta manera nos aseguramos que apenas acabe el quantum, un nuevo proceso entra.
 
 ### Animación
 Animación...
