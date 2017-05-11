@@ -7,11 +7,15 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="2"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/lotto.c</file>
+            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/sorteo.c</file>
             <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/round_robin_list.h</file>
             <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/round_robin.c</file>
-            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/myTimer.h</file>
+            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/lotto.h</file>
+            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/sorteo.h</file>
             <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/round_robin.h</file>
             <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/myTimer.c</file>
+            <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/sorteo_list.h</file>
             <file>file:/home/gustavo/Documentos/I_Semestre_2017/SO/progra1/mypthread/simpeThread.h</file>
         </group>
     </open-files>

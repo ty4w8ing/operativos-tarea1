@@ -22,7 +22,7 @@ void sorteo_end_quantum(int _signal);
 void sorteo_initialize(int quantum, thread_attributes* elemento);
 void sorteo_next();
 void sorteo_delete(selemento* hilo);
-void sorteo_insert(thread_attributes* hilo, unsigned tiquetes);
+void sorteo_insert(thread_attributes* hilo, int tiquetes);
 thread_attributes sorteo_get_current();
 selemento sorteo_busqueda(int indice);
 void sorteo_end_of_execution();

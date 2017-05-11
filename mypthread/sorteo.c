@@ -68,7 +68,7 @@ void sorteo_delete(selemento* hilo){
 }
 
 /* Funcion que a;ade un nuevo hilo a la cola */
-void sorteo_insert(thread_attributes* hilo, unsigned tiquetes){
+void sorteo_insert(thread_attributes* hilo, int tiquetes){
     if(sorteo_lista_thread->head->hilo != NULL){ //-------------------- si la lista no esta vacia
         selemento* temporal = malloc(sizeof(selemento)); //------------ asignamos memoria para el nuevo elemento
         temporal->hilo = hilo; //-------------------------------------- le damos la info del hilo al nuevo espacio 
