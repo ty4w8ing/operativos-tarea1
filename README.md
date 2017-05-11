@@ -203,12 +203,87 @@ Para el *rr* (*round robin*), utilizamos una lista enlazada circular, donde el *
 Para sorteo, se asignan tiquetes a cada proceso al ingresar en la lista enlazada, y el siguiente proceso sería tomado al azar, usando un random probabilístico. De esta manera nos aseguramos que apenas acabe el quantum, un nuevo proceso entra.
 
 ### Animación
-Animación...
+
+####administrarObjetos.h
+Tiene una serie de metodos para agregar figuras al archivo de objetos, eliminar figuras, ver objetos almacenados, ver el movimiento del objeto con una rotación y visualizar la figura.
+
+####conexionesPC.h
+Tiene las funciones para iniciar el servidor, asociar los monitores, extraer la información de los objetos y ejecutar la animación.
+
+####funcionesExtra.h
+Tiene funciones que se necesitaban en varios archivos, entonces para no repetir código, se agrego en este archivo.
+
+####main
+Archivo principal que toma los parámetros de entrada y llama a las funciones adecuadas.
+
+####matrizCanvas.h
+Tiene las funciones desarrolladas para validar que las figuras no choquen con otras en el canvas. El código funciona, pero hay una serie de errores que no permitieron su funcionamiento esperado.
+
+####monitor.h
+Administra todas las funciones referentes a los monitores.
+
+####objeto.h 
+Tiene las funciones principales para desplezar el objeto en el canvas y cargar los datos necesarios.
+
+###Diseño Animación
+El siguiente contenido explica algunos puntos referentes al diseño de la animación:
+
+#####MONITOR
+El id debe iniciar con 1.
+Los monitores deben estar ordenados por su id (menor a mayor).
+El valor posXIni representa el punto "x" donde iniciará el monitor y el posYIni el "y" donde iniciará el monitor.
+
+Estructura
+monitor,nombre,largo,ancho,posXIni,posYIni,id
+
+Ejemplo
+monitor,m1,150,30,0,0,1
+
+#####OBJETO
+Hay 2 tipos de descripción:
+
+1. Round Robbin
+El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+Para este sckedudeler se manejara una numeración de 0 en su espacio.
+La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+El tiempo de Ejecución y Salida está asociado al scheduler en tiempo real.
+
+Estructura
+objeto,tipoObjeto,scheduler,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucion
+
+Ejemplo
+objeto,flecha,0,130,15,250,15,180,30
+
+2. Sorteo
+El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+Para este sckedudeler se manejara una numeración de 1 en su espacio.
+El parámetro cantidadTiquetes se asocia al número inicial de tiquetes que se le otorgará al objeto.
+La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+El tiempo de Ejecución está asociado al scheduler en tiempo real.
+
+Estructura
+objeto,tipoObjeto,scheduler,cantidadTiquetes,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucionn
+
+Ejemplo
+objeto,fle,1,2,250,25,100,25,90,10,30 
 
 ## Instrucciones para ejecutar el programa
+Para compilar el proyecto se utilizo netbeans, con el modulo para el lenguaje C/C++. Nada más hay que agregar en la configuración del compilador gcc -pthread o si desea compilar la animación desde la terminal debe poner el siguiente comando en el directorio principal:
+#####gcc -pthread *
 
-`$ Animación...`
+Si desea ejecutar de una vez la animación, ingresa a la siguiente ruta del proyecto /dist/Debug/GNU-Linux y agregar el comando:
+#####./animacion -e data/animacion.txt
 
+Es importante que en ese directorio, este el archivo objetos.txt que tendrá la forma de las figuras que se asocian en la animación. Además, se puede administrar las figuras de los objetos ingresando el comando:
+
+#####./animacion -c
+
+Para asociar los monitores, se debe agregar el comando:
+
+#####telnet ip 8080
+
+La ip corresponde a la máquina donde se ejecuta la animación, y debe estar en la misma red las computadoras. Debe asociar los monitores, según la prioridad que agregó en el archivo de la animación.
+ 
 ## Actividades realizadas por estudiante
 
 Se desglosan en el formato: 
@@ -217,19 +292,27 @@ Fecha – Cantidad Horas Invertidas - Tarea - Estudiante
 
 - `15 al 25 de Abril - 10 horas - Investigación sobre la biblioteca pthread- Gustavo`. 
 
+- `15 al 25 de Abril - 8 horas - Investigación sobre la biblioteca pthread- Mauricio`. 
+
+- `15 al 25 de Abril - 80 horas - Crear la animación y corregir problemas- Mauricio`.
+
+- `15 al 25 de Abril - 10 horas - Algoritmo scheduler tiempo real- Mauricio`.  
+
+- `15 al 25 de Abril - 4 horas - Investigación sobre telnet- Mauricio`. 
+
 - `26 al 30 de Abril - 15 horas - Creación de las bases (schedulers) de la biblioteca myPthread exeptuando tiempo real - Gustavo`. 
 
 - `10 Mayo - 2 hora - Documentación - Gustavo y Mauricio`. 
 
 ## Comentarios finales (estado del programa)
 
-Animación...
+La animación cumple con la mayoría de requerimientos del proyecto. Se pueden crear objetos, correr la animación y finalizarla con normalidad y sin ningún problema. Además, se puede ejecutar la animación en otros equipos gracias a la utilización de telnet y se usa pthreads, al asignarle a cada objeto un hilo. Lo que falto fue poder desarrollar los propios threads y además, validar de que una figura no sobrepase la posición de otra. Este último punto se trabajo, pero el problema fue que no se pudo mantener el estado de la estructura que contenia las posiciones ocupadas por los objeto, por la característica del lenguaje C de poder manipular objetos por referencia o por copia.
 
 Para la biblioteca myPthread se logró incorporar con éxito los algoritmos de scheduling, pero no así las funciones de pthread asociadas a la biblioteca pthread ni los mutex. No se encontró suficiente información para su implementación, pese a que si se tenía en claro como debían de funcionar estos.
 
 ## Conclusiones
 
-Animación...
+El desarrollo de la animación ayudo a reforzar los conocimientos en el lenguaje C y otras características que este posee y que lo hacen diferencial. Lo faltante de la animación se pudo finalizar, pero por algunos inconvenientes personales y responsabilidades en otros cursos no alcanzo el tiempo.
 
 Pese a la no implementación de la biblioteca, se obtuvo un conocimiento bastante valioso de la biblioteca pthread y de los mutex para implementaciónes futuras. A la vez que se aprendió sobre scheduling a nivel de procesos y cambios de contexto.
 
