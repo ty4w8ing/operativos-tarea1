@@ -1,7 +1,7 @@
 # MultiDisplay Animation
 Estudiantes:
 - Mauricio Arce.
-- Gustavo González.
+- José Gustavo González González.
 
 ## Introducción
 ### Objetivo
@@ -128,9 +128,21 @@ Para esta biblioteca se implemtó lo siguiente.
 
 #### timer.h
 
-Esto controla el timer y manda un signal de *Alert*, esto para ser utilizado en los cambios de contexto más adelante.
+Esto controla el timer y manda un signal de *Alert*, esto para ser utilizado en los cambios de contexto más adelante. Entre sus funciones encontramos:
 
-### simpleThread.h
+##### setTimer
+
+Función que inicializa el timer.
+
+##### getTimer
+
+Funcion que retorna el tiempo transcurrido y para la alarma.
+
+##### stopTimer
+
+Funcion que detiene el timer.
+
+#### simpleThread.h
 
 Es una estructura de datos que contiene los atributos principales de los threads que se van a crear. Estos atributos son:
 
@@ -143,25 +155,32 @@ Es una estructura de datos que contiene los atributos principales de los threads
  - joined_to: Hilo que esta esperando a que termine.
  - joined_thread: El hilo que está esperando a que este termine.
  
-### lotto.h
+#### lotto.h
 
-En este header se genera un random probabilistico donde se le asigna más probabilidad a un proceso con más tiquetes.
+En este header se genera un random probabilistico donde se le asigna más probabilidad a un proceso con más tiquetes. Entre sus funciones encontramos:
 
-### [scheduling]_list.h
+### ganador
+
+Funcion encargada de generar el random probabilistico.
+
+#### [scheduling]_list.h
 
 Es la lista que contiene la estructura principal para almacenar el algoritmo de scheduling.
 
-### round_robin.h
+#### round_robin.h
 
-Es el algoritmo de scheduling que va de uno en uno asignando procesos de forma circular.
+Es el algoritmo de scheduling que va de uno en uno asignando procesos de forma circular. 
 
-### sorteo.h
+#### sorteo.h
 
 Es el algoritmo de scheduling que utiliza *lotto.h* para asignar procesos probabilisticamente.
 
+### Animación
+Animación...
 
 ## Instrucciones para ejecutar el programa
 
+`$ Animación...`
 
 ## Actividades realizadas por estudiante
 
@@ -169,13 +188,24 @@ Se desglosan en el formato:
 
 Fecha – Cantidad Horas Invertidas - Tarea - Estudiante
 
-- `9 Abril - 1 hora - Creación del Git, inicio del README.md - Gustavo`. 
-- `15 al 25 de Abril - 10 horas - Investigación sobre la biblioteca pthread de POSIX - Gustavo`. 
+- `15 al 25 de Abril - 10 horas - Investigación sobre la biblioteca pthread- Gustavo`. 
 - `26 al 30 de Abril - 15 horas - Creación de las bases (schedulers) de la biblioteca myPthread exeptuando tiempo real - Gustavo`. 
+- `10 Mayo - 2 hora - Documentación - Gustavo y Mauricio`. 
 
 ## Comentarios finales (estado del programa)
+
+Animación...
+
+Para la biblioteca myPthread se logró incorporar con éxito los algoritmos de scheduling, pero no así las funciones de pthread asociadas a la biblioteca pthread ni los mutex. No se encontró suficiente información para su implementación, pese a que si se tenía en claro como debían de funcionar estos.
+
 ## Conclusiones
+
+Animación...
+
+Pese a la no implementación de la biblioteca, se obtuvo un conocimiento bastante valioso de la biblioteca pthread y de los mutex para implementaciónes futuras. A la vez que se aprendió sobre scheduling a nivel de procesos y cambios de contexto.
+
 ## Bibliografía
 
 - Markdown Cheatsheet. (2016, Febrero 26). Obtenido de https://github.com/adam-p/markdown-here/wiki/Markdown-Cheatsheet 
 - SetJump para cambios de contexto. Obtenido de https://es.wikipedia.org/wiki/Setjmp.h 
+- Margaret Rouse. (2010). Round Robin. Obtenido el 26/Abril/2017, de Techtarget Sitio web: http://whatis.techtarget.com/definition/round-robin
