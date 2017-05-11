@@ -6,6 +6,15 @@
 #include "monitor.h"
 #include "funcionesExtra.h"
 
+void limpiarMonitores(struct Monitor* monitores){
+    char* limpiar = "\033c";
+    while(monitores != NULL){
+        int idConexion = monitores->idConexion;
+        write(idConexion, limpiar, strlen(limpiar));
+        monitores = monitores->siguienteMonitor;
+    }
+}
+
 void posicionarCursor(struct Monitor* monitores){
     char* inicio = "\033[0;0H\n";
     while(monitores != NULL){
@@ -87,6 +96,31 @@ void imprimirMonitores(struct Monitor* monitores){
         printf("%s[%d](%d,%d)-connexión %d\n",monitores->nombre, monitores->id, monitores->largo, monitores->ancho,monitores->idConexion);
         monitores = monitores->siguienteMonitor;
     }
+}
+
+int* dimensionCanvas(struct Monitor* monitores){
+    int posXMayor = 0;
+    int posYMayor = 0;
+    
+    while(monitores != NULL){
+        if(posXMayor <= (monitores->posXIni + monitores->largo) && posYMayor <= (monitores->posYIni + monitores->ancho)){
+            posXMayor = monitores->posXIni + monitores->largo;
+            posYMayor = monitores->posYIni + monitores->ancho;
+        }
+        else if(posXMayor <= (monitores->posXIni + monitores->largo)  && posYMayor >= (monitores->posYIni + monitores->ancho)){
+            posXMayor = monitores->posXIni + monitores->largo;
+        }
+        else if(posXMayor >= (monitores->posXIni + monitores->largo)  && posYMayor <= (monitores->posYIni + monitores->ancho)){
+            posYMayor = monitores->posYIni + monitores->ancho;
+        }
+        monitores = monitores->siguienteMonitor;
+    }
+    
+    int* dimensiones = (int*)malloc(2*sizeof(int*));
+    *(dimensiones) = posXMayor;
+    *(dimensiones+1) = posYMayor;
+    
+    return dimensiones;
 }
 
 void insertarConexiones(struct Monitor** monitores, int idConexiones[]){

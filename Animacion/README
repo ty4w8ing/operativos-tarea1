@@ -1,0 +1,51 @@
+//Ejecutar animación
+//El archivo especificado debe tener la configuración de los monitores y objetos
+
+./animacion -e archivo.txt
+
+//Conectar dispotivo al servidor de la animación
+//telnet ip puerto
+
+telnet 192.168.1.123 8080
+
+
+//Descipción de la Animación
+//MONITOR
+//Los monitores deben estar ordenados por su id (menor a mayor).
+//El id debe iniciar con 1.
+//El valor posXIni representa el punto "x" donde iniciará el monitor y el posYIni el "y" donde iniciará el monitor.
+
+//Estructura
+monitor,nombre,largo,ancho,posXIni,posYIni,id
+
+//Ejemplo
+monitor,m1,150,30,0,0,1
+
+//OBJETO
+//Hay 2 tipos de descripción:
+
+//1. Round Robbin
+//El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+//Para este sckedudeler se manejara una numeración de 0 en su espacio.
+//La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+//El tiempo de Ejecución y Salida está asociado al scheduler en tiempo real.
+
+//Estructura
+objeto,tipoObjeto,scheduler,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucion,tiempoSalida 
+
+//Ejemplo
+objeto,flecha,0,130,15,250,15,180,30,50
+
+//2. Sorteo
+//El tipoObjeto es el nombre del objeto que ya está almacenado en el archivo objetos.txt.
+//Para este sckedudeler se manejara una numeración de 1 en su espacio.
+//El parámetro cantidadTiquetes se asocia al número inicial de tiquetes que se le otorgará al objeto.
+//La rotación puede ser 0,90,180,270 y 117 (rotación aleatoria).
+//El tiempo de Ejecución y Salida está asociado al scheduler en tiempo real.
+
+//Estructura
+objeto,tipoObjeto,scheduler,cantidadTiquetes,posIniX,posIniY,posFinX,posFinY,rotacion,tiempoEjecucion,tiempoSalida 
+
+//Ejemplo
+objeto,fle,1,2,250,25,100,25,90,10,30 
+

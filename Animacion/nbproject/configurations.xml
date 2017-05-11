@@ -7,6 +7,7 @@
       <itemPath>administrarObjetos.h</itemPath>
       <itemPath>conexionesPC.h</itemPath>
       <itemPath>funcionesExtra.h</itemPath>
+      <itemPath>matrizCanvas.h</itemPath>
       <itemPath>monitor.h</itemPath>
       <itemPath>objeto.h</itemPath>
     </logicalFolder>
@@ -21,6 +22,7 @@
       <itemPath>conexionesPC.c</itemPath>
       <itemPath>funcionesExtra.c</itemPath>
       <itemPath>main.c</itemPath>
+      <itemPath>matrizCanvas.c</itemPath>
       <itemPath>monitor.c</itemPath>
       <itemPath>objeto.c</itemPath>
     </logicalFolder>
@@ -46,7 +48,8 @@
       </toolsSet>
       <compileType>
         <cTool>
-          <standard>10</standard>
+          <standard>3</standard>
+          <commandlineTool>gcc -pthread</commandlineTool>
         </cTool>
       </compileType>
       <item path="administrarObjetos.c" ex="false" tool="0" flavor2="0">
@@ -62,6 +65,10 @@
       <item path="funcionesExtra.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="matrizCanvas.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="matrizCanvas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="monitor.c" ex="false" tool="0" flavor2="0">
       </item>
@@ -106,6 +113,10 @@
       <item path="funcionesExtra.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="main.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="matrizCanvas.c" ex="false" tool="0" flavor2="0">
+      </item>
+      <item path="matrizCanvas.h" ex="false" tool="3" flavor2="0">
       </item>
       <item path="monitor.c" ex="false" tool="0" flavor2="0">
       </item>

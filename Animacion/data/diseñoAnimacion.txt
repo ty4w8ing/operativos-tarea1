@@ -1,12 +1,13 @@
 MONITOR
 El id debe iniciar con 1.
 Los monitores deben estar ordenados por su id (menor a mayor).
+El valor posXIni representa el punto "x" donde iniciará el monitor y el posYIni el "y" donde iniciará el monitor.
 
 Estructura
-monitor,nombre,largo,ancho,id
+monitor,nombre,largo,ancho,posXIni,posYIni,id
 
 Ejemplo
-monitor,m1,150,30,1
+monitor,m1,150,30,0,0,1
 
 OBJETO
 Hay 2 tipos de descripción:

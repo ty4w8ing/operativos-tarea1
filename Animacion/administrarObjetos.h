@@ -6,6 +6,7 @@ typedef struct ObjetoAlmacenado{
     char* figura;
 } Figura;
 
+void menuObjetos();
 void movimiento0G(char* nombreObj);
 void movimiento90G(char* nombreObj);
 void movimiento180G(char* nombreObj);

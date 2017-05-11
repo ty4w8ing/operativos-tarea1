@@ -4,6 +4,7 @@
 #include <sys/types.h>
 #include <sys/socket.h>
 #include <sys/stat.h>
+#include <pthread.h>
 
 #include <unistd.h>
 #include <netinet/in.h>
@@ -13,6 +14,7 @@
 
 #include "monitor.h"
 #include "funcionesExtra.h"
+#include "matrizCanvas.h"
 #include "objeto.h"
 
 int puerto = 8080;
@@ -20,6 +22,28 @@ int numeroMonitores = 0;
 int conexionesMaxima = 200;
 int numeroObjetos = 0;
 
+int ejecutarHilos(struct Objeto* objetos, struct Monitor* monitores, struct Canvas* canvas, int numeroObjetos, pthread_t hilos[]){
+    int i;
+    int animacionCompletada = 1;
+    
+    
+    for(i = 0; i < numeroObjetos; i+=1){
+        struct elementosHilo* arg = malloc(sizeof(struct elementosHilo*));
+        arg->monitores = monitores;
+        arg->objeto = objetos;
+        arg->canvas = canvas;
+
+        if(objetos->posXAct != objetos->posXFin || objetos->posYAct != objetos->posYFin){
+            animacionCompletada = 0;
+            pthread_create(&hilos[i],NULL, iniciarObjeto, arg);
+               
+            pthread_join(hilos[i], NULL);
+        }
+        objetos = objetos->siguienteObjeto;
+    }
+ 
+    return animacionCompletada;
+}
 void terminarConexiones(int* idConexiones){
     int i;
     
@@ -44,13 +68,13 @@ void iniciarSocket(char* archivo){
     else{
         printf("Servidor de la Animación Iniciado!!\n");
     }
-    
+                    
     numeroMonitores = cantidadElementos(archivo, "monitor");
     numeroObjetos = cantidadElementos(archivo, "objeto");
     
     struct Monitor* monitores = extraerMonitoresArchivo(archivo);
     struct Objeto* objetos = extraerObjetosArchivo(archivo);
-    
+       
     printf("Se han detectado %d monitores!!\n",numeroMonitores);
     printf("Se han detectado %d objetos!!\n",numeroObjetos);
     
@@ -74,8 +98,15 @@ void iniciarSocket(char* archivo){
     listen(sock, conexionesMaxima);
     int idMonitores[numeroMonitores];
     int pos = 0;
-    int animacionRealizada = 0;    
+    int animacionRealizada = 0;   
     
+    int* dim = dimensionCanvas(monitores);
+    struct 
+    
+    
+    Canvas* canvas = crearMatriz(dim[1], dim[0]);
+   
+
     while (!animacionRealizada) {
         //Se acepta la conexión
         cliente = accept(sock, (struct sockaddr *) &cli_addr, &sin_len);
@@ -92,20 +123,27 @@ void iniciarSocket(char* archivo){
            
            imprimirMonitores(monitores);
            printf("\n");
-           printf("Iniciando Animación!!\n"); 
+           printf("Iniciando Animación!!\n");  
            
            limpiarMonitores(monitores);
-           iniciarAnimacion(objetos, monitores);
-           sleep(1);
-           limpiarMonitores(monitores);
-           int finalizar = ejecutarAnimacion(objetos, monitores);
            
-           while(finalizar == 0){
-               sleep(1);
-               limpiarMonitores(monitores);
-               finalizar = ejecutarAnimacion(objetos, monitores);
+           pthread_t hilos[numeroObjetos];
+           
+                     
+           int finAnimacion = 0;
+           while(finAnimacion == 0){
+               finAnimacion = ejecutarHilos(objetos, monitores, canvas, numeroObjetos, hilos);
            }
            
+           pthread_exit(NULL);
+           //Generar matriz[xCanvas][yCanvas]
+                      
+           
+           //iniciarObjeto( monitores);
+           
+           sleep(1);
+           limpiarMonitores(monitores);
+                      
            terminarConexiones(idMonitores);
            animacionRealizada = 1;
         }

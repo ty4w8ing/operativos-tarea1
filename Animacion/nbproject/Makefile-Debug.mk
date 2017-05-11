@@ -14,7 +14,7 @@ GREP=grep
 NM=nm
 CCADMIN=CCadmin
 RANLIB=ranlib
-CC=gcc
+CC=gcc -pthread
 CCC=g++
 CXX=g++
 FC=gfortran
@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/conexionesPC.o \
 	${OBJECTDIR}/funcionesExtra.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/matrizCanvas.o \
 	${OBJECTDIR}/monitor.o \
 	${OBJECTDIR}/objeto.o
 
@@ -70,32 +71,37 @@ ${CND_DISTDIR}/${CND_CONF}/${CND_PLATFORM}/animacion: ${OBJECTFILES}
 ${OBJECTDIR}/administrarObjetos.o: administrarObjetos.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/administrarObjetos.o administrarObjetos.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/administrarObjetos.o administrarObjetos.c
 
 ${OBJECTDIR}/conexionesPC.o: conexionesPC.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conexionesPC.o conexionesPC.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/conexionesPC.o conexionesPC.c
 
 ${OBJECTDIR}/funcionesExtra.o: funcionesExtra.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/funcionesExtra.o funcionesExtra.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/funcionesExtra.o funcionesExtra.c
 
 ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/matrizCanvas.o: matrizCanvas.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrizCanvas.o matrizCanvas.c
 
 ${OBJECTDIR}/monitor.o: monitor.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/monitor.o monitor.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/monitor.o monitor.c
 
 ${OBJECTDIR}/objeto.o: objeto.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
-	$(COMPILE.c) -g -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/objeto.o objeto.c
+	$(COMPILE.c) -g -std=c99 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/objeto.o objeto.c
 
 # Subprojects
 .build-subprojects:

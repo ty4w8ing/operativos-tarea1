@@ -39,6 +39,7 @@ OBJECTFILES= \
 	${OBJECTDIR}/conexionesPC.o \
 	${OBJECTDIR}/funcionesExtra.o \
 	${OBJECTDIR}/main.o \
+	${OBJECTDIR}/matrizCanvas.o \
 	${OBJECTDIR}/monitor.o \
 	${OBJECTDIR}/objeto.o
 
@@ -86,6 +87,11 @@ ${OBJECTDIR}/main.o: main.c
 	${MKDIR} -p ${OBJECTDIR}
 	${RM} "$@.d"
 	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/main.o main.c
+
+${OBJECTDIR}/matrizCanvas.o: matrizCanvas.c
+	${MKDIR} -p ${OBJECTDIR}
+	${RM} "$@.d"
+	$(COMPILE.c) -O2 -std=c11 -MMD -MP -MF "$@.d" -o ${OBJECTDIR}/matrizCanvas.o matrizCanvas.c
 
 ${OBJECTDIR}/monitor.o: monitor.c
 	${MKDIR} -p ${OBJECTDIR}
